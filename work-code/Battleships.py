@@ -2,28 +2,26 @@ import random
 import time
 
 def start_menu():
-    print("-"*35)
+    print("-"*45)
     print("Welcome to Battleships Game")
-    print("-"*35)
+    print("-"*45)
     print("1. Play Game")
     print("2. Exit")
-    print("-"*35)
+    print("-"*45)
 
 def print_board(board):
-    print("-"*35)
-    line1 = "+".join(board[0:3])
-    line2 = "+".join(board[3:6])
-    line3 = "+".join(board[6:9])
-    print(line1 + "\n" + line2 + "\n" + line3)
+    print("-"*45)
+    for i in range(0, len(board), 4):
+        print("+".join(board[i:i+4]))
 
 def play_game():
-    numbers = list(range(9))
+    numbers = list(range(16))
     print(numbers)
 
-    board = ["--*--"] * 9
+    board = ["--*--"] * 16
     print_board(board)
 
-    for i in range(3):
+    for i in range(4):
         ship = random.choice(numbers)
         numbers.remove(ship)
         board[ship] = "--A--"
@@ -32,7 +30,7 @@ def play_game():
     screen_board = board.copy()
 
     for i in range(5):
-        print("-"*35)
+        print("-"*45)
         print("", str(5-i))
 
         while True:
@@ -40,17 +38,18 @@ def play_game():
                 guess = int(input(
                     """
 
-                    0-1-2
-                    3-4-5
-                    6-7-8
+                    0-1-2-3
+                    4-5-6-7
+                    8-9-10-11
+                    12-13-14-15
 
                     Where should we bomb, commander!? =
                     """))
 
-                if 0 <= guess <= 8:
+                if 0 <= guess <= 15:
                     break
                 else:
-                    print("Please enter a number between 0 and 8.")
+                    print("Please enter a number between 0 and 15.")
             except ValueError:
                 print("Invalid input. Please enter a number.")
 
@@ -62,10 +61,9 @@ def play_game():
             screen_board[guess] = "--X--"
 
         print_board(screen_board)
-        print_board(screen_board)
         time.sleep(3)
 
-    if screen_board.count("--H--") == 3:
+    if screen_board.count("--H--") == 4:
         print("They became food for fish")
     else:
         print("We lost the war :(")
@@ -83,7 +81,7 @@ def main():
             print("Exiting game")
             break
         else:
-            print("Invalid choice. Eenter 1 to play and 2 to exit.")
+            print("Invalid choice. Enter 1 to play and 2 to exit.")
 
 if __name__ == "__main__":
     main()
