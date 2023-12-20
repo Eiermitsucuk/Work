@@ -41,10 +41,11 @@ def play_game():
             try:
                 guess = input(
                     """
-                    A1 B1 C1 D1
-                    A2 B2 C2 D2
-                    A3 B3 C3 D3
-                    A4 B4 C4 D4
+                          A B C D
+                        1 0 0 0 0
+                        2 0 0 0 0
+                        3 0 0 0 0
+                        4 0 0 0 0
 
                     Where should we bomb, commander!? =
                     """)
