@@ -15,15 +15,19 @@ def print_board(board):
         print("+".join(board[i:i+4]))
 
 def play_game():
-    numbers = list(range(16))
-    print(numbers)
+    # Mapping between chess coordinates and index values
+    chess_coordinates = {
+        'A1': 0, 'A2': 1, 'A3': 2, 'A4': 3,
+        'B1': 4, 'B2': 5, 'B3': 6, 'B4': 7,
+        'C1': 8, 'C2': 9, 'C3': 10, 'C4': 11,
+        'D1': 12, 'D2': 13, 'D3': 14, 'D4': 15
+    }
 
     board = ["--*--"] * 16
     print_board(board)
 
     for i in range(4):
-        ship = random.choice(numbers)
-        numbers.remove(ship)
+        ship = random.choice(list(chess_coordinates.values()))
         board[ship] = "--A--"
 
     print_board(board)
@@ -35,30 +39,32 @@ def play_game():
 
         while True:
             try:
-                guess = int(input(
+                guess = input(
                     """
-
-                    0-1-2-3
-                    4-5-6-7
-                    8-9-10-11
-                    12-13-14-15
+                    A1 B1 C1 D1
+                    A2 B2 C2 D2
+                    A3 B3 C3 D3
+                    A4 B4 C4 D4
 
                     Where should we bomb, commander!? =
-                    """))
+                    """)
 
-                if 0 <= guess <= 15:
+                # Convert chess coordinate to index value
+                guess_index = chess_coordinates.get(guess.upper())
+                
+                if guess_index is not None:
                     break
                 else:
-                    print("Please enter a number between 0 and 15.")
+                    print("Invalid input. Please enter a valid chess coordinate.")
             except ValueError:
-                print("Invalid input. Please enter a number.")
+                print("Invalid input. Please enter a valid chess coordinate.")
 
-        if board[guess] == "--A--":
+        if board[guess_index] == "--A--":
             print("We hit them !!!")
-            screen_board[guess] = "--H--"
+            screen_board[guess_index] = "--H--"
         else:
             print("That was close but not enough !!!")
-            screen_board[guess] = "--X--"
+            screen_board[guess_index] = "--X--"
 
         print_board(screen_board)
         time.sleep(3)
@@ -87,3 +93,4 @@ if __name__ == "__main__":
     main()
 
 print("GAME OVER")
+
