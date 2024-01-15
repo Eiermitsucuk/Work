@@ -1,37 +1,41 @@
-from word_list import word_dict_easy,word_dict_normal ,word_dict_hard , vowels, animation, word_dict, instructiones, word_dict_very_hard
+from word_list import word_dict_easy, word_dict_normal, word_dict_hard, vowels, animation, instructiones, word_dict_very_hard, pls_type123, quit, menu, c_diff, winner
 import random
 import time
-   
-def main(): #main menu
+
+#main menu  
+def main(): 
     while True:
-        choice = input("\n1.Play\n\n2.How to play\n\n3.Quit\n\n\n:")
+        print(menu)
+        choice = input()
         if choice == "1":
             difficulty()
         elif choice == "3":
-            print("\n\n\n\n\n\n\n\n\nquitting game...")
-            break
+            print(quit)
+            exit()
         elif choice == "2":
             HowToPlay()
         else:
-            print("please type 1, 2 or 3")
+            print(pls_type123)
             time.sleep(2)
- 
+
 def game(word_dict):
-    word = random.choice(word_dict) #picks random word from a word_list.py file
-    word = " ".join(word).upper() #gives the word space and turns all letters uppercase
+    #picks random word from a word_list.py file
+    word = random.choice(list(word_dict.keys())) 
+    #gives the word space and turns all letters uppercase
+    word = " ".join(word).upper() 
     unknown_word = ""
     revealed_letters = ""
     if gamemode == "very_hard":
         guesses = 4 
     else: 
-        guesses = 7 #guess amount
-    
-    while guesses > 0: #loop that counts lifes
+        #guess amount
+        guesses = 7 
+    #loop that counts lifes
+    while guesses > 0: 
         guesses -= 1
-        if gamemode == "very_hard":
-            VHhangman(guesses)
-        else:hangman(guesses)
-        for letter in word:  #loops that creates the looked for word
+        hangman(guesses)
+        #loops that creates the looked for word
+        for letter in word:  
             if letter in vowels:
                 unknown_word = unknown_word + letter + " "
             elif letter in revealed_letters:
@@ -40,129 +44,104 @@ def game(word_dict):
                 unknown_word = unknown_word
             else:
                 unknown_word = unknown_word + "_ "
-        print(unknown_word) #displays the looked for word
-        if unknown_word == word + " ": #checks if inputed word matches to searched word
+        #displays the looked for word        
+        print(unknown_word)
+        #checks if inputed word matches to searched word 
+        if unknown_word == word + " ": 
             win()
         letter_guess = input("Guess a letter:")
-        if letter_guess.upper() in word and letter_guess.upper() not in vowels and letter_guess.upper() not in revealed_letters: #checks if the letter is correct
+        #checks if the letter is correct
+        letter_guess = letter_verification(letter_guess.upper(), revealed_letters, word.lower().replace(' ', ''), guesses)
+        if letter_guess.isalpha():
+                if letter_guess in word:
+                    guesses += 1
+                    #keeps a track of all the letters that were alr picked
+                    revealed_letters = revealed_letters + letter_guess.upper() 
+                else: 
+                    revealed_letters = revealed_letters + letter_guess.upper() 
+        elif letter_guess == "1":
             guesses += 1
-        print("___________________________________\n")
-        letter_guess = letter_verification(letter_guess.upper(), revealed_letters,word.lower().replace(' ', ''))
-        if letter_guess == "1":
-            guesses += 1
-        elif letter_guess == "2":
-            guesses += 0
-        else:
-            revealed_letters = revealed_letters + letter_guess.upper() #keeps a track of all the letters that were alr picked
         print("\n" + str(guesses) + " guesses remaining")
         print("Letters tried: " + ", ".join(revealed_letters))    
         unknown_word = ""
     lost(word)
 
-def letter_verification(letter_guess, revealed_letters,word): 
+def letter_verification(letter_guess, revealed_letters, word, guesses): 
     if letter_guess.upper() == word.upper():
         win()
-    elif letter_guess == "HINT": #hint
+    #hint
+    elif letter_guess == "HINT": 
         print("Hint:" + "\033[92m " + word_dict.get(word) + "\033[0m")
         letter_guess = "1"
         return letter_guess
-    elif len(letter_guess) != 1: #checks the letter count
+    #checks the letter count
+    elif len(letter_guess) != 1: 
         print("\033[91m" + "word was not correct" + "\033[0m")
         letter_guess = "2"
         return letter_guess
-    elif letter_guess in vowels: #is it a vowel?
+    #is it a vowel?
+    elif letter_guess in vowels:
         print("\033[91m" + "all vowels are already shown.." + "\033[0m")
         letter_guess = "1"
         return letter_guess
-    elif letter_guess in revealed_letters: #was it alr picked?
+    #was it alr picked?
+    elif letter_guess in revealed_letters: 
         print("\033[91m" + "you already tried this letter" + "\033[0m")
         letter_guess = "1"
         return letter_guess
-    elif letter_guess.isalpha(): #is it even a letter?
+    #is it even a letter?
+    elif letter_guess.isalpha():
         return letter_guess
-    else:
+    else: 
         print("\033[91m" + "only letters please!!" + "\033[0m")
         letter_guess = "1"
         return letter_guess
     
 def win():
-    print("\033[93m" + "you win woohooo!!!" + "\033[0m")
-    print("___________________________________\n")
+    print(winner)
     time.sleep(2)
-    play_again()
+    main()
 
 def lost(word):
     print(animation[7])
-    print("\033[93m" + "you lose, womp womp " + "\033[0m" "\nthe word was... " "\033[36m" +  word + "\033[0m")
-    print("___________________________________\n")
+    print("\033[93m" + "you lose, womp womp " + "\033[0m" "\nthe word was... " "\033[36m" +  word + "\033[0m" + "\n___________________________________\n")
     time.sleep(2)
-    play_again()
-
-def play_again():
-    while True:
-        choice = input("\n1.Play again\n\n2.How to play\n\n3.Quit\n\n\n:")
-        if choice == "1":
-            difficulty()
-        elif choice == "3":
-            print("quitting game...")
-            break
-        elif choice == "2":
-            HowToPlay()
-        else:
-            print("please type 1, 2 or 3")
-            time.sleep(2)
+    main()
 
 def difficulty():
     while True:
-        difficulty_choice = input("\nchoose difficulty\n\n  1.easy\n\n  2.normal\n\n  3.hard\n\n:")
+        print(c_diff)
+        difficulty_choice = input()
         global gamemode
+        global word_dict
+        word_dict = ""
         gamemode = ""
         if difficulty_choice == "1":
             gamemode = "easy"
-            game(word_dict_easy)
         elif difficulty_choice == "2":
             gamemode = "normal"
-            game(word_dict_normal)
         elif difficulty_choice == "3":
             gamemode = "hard"
-            game(word_dict_hard)
         elif difficulty_choice == "4":
             gamemode = "very_hard"
-            game(word_dict_very_hard)
-        else:
-            print("\n\n\n\n\n please type 1, 2 or 3\n\n\n\n")
+        else: 
+            print(pls_type123)
             time.sleep(2)
+            difficulty()
+            #retrives the word_dict with the specified name
+        word_dict = globals()["word_dict_" + gamemode]
+        game(word_dict)
 
 def hangman(guesses):
-    if guesses == 6:
-        print(animation[0])
-    elif guesses == 5:
-        print(animation[1])
-    elif guesses == 4:
-        print(animation[2])
-    elif guesses == 3:
-        print(animation[3])
-    elif guesses == 2:
-        print(animation[4])
-    elif guesses == 1:
-        print(animation[5])
-    elif guesses == 0:
-        print(animation[6])
+    if gamemode == "very_hard":
+        print(animation[guesses*2])
+    else:
+        print(animation[guesses])
 
 def HowToPlay():
     print(instructiones[0])
     time.sleep(5)
     main()
-
-def VHhangman(guesses):
-    if guesses == 3:
-        print(animation[0])
-    elif guesses == 2:
-        print(animation[2])
-    elif guesses == 1:
-        print(animation[5])
-    elif guesses == 0:
-        print(animation[6])
 
 if __name__ == "__main__":
     main()
