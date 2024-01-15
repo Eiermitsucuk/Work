@@ -1,143 +1,29 @@
 vowels = ["A","E","I","O","U"]
-
-word_dict_easy = [
-    'cat',
-    'dog',
-    'bird',
-    'fish',
-    'tree',
-    'rain',
-    'sun',
-    'moon',
-    'star',
-    'book',
-    'pen',
-    'ball',
-    'fire',
-    'song',
-    'love',
-    'home',
-    'work',
-    'play',
-    'blue',
-    "myth"
-
-]
-
-word_dict_normal = [
-    'orange',
-    'banana',
-    'computer',
-    'guitar',
-    'project',
-    'journey',
-    'freedom',
-    'garden',
-    'chocolate',
-    'diamond',
-    'library',
-    'concert',
-    'victory',
-    'morning',
-    'evening',
-    'country',
-    'awesome',
-    'weather',
-    'captain',
-    'whisper'
-]
-
-word_dict_hard = [
-    'beautiful',
-    'challenge',
-    'celebrate',
-    'community',
-    'experience',
-    'important',
-    'interesting',
-    'knowledge',
-    'opportunity',
-    'performance',
-    'restaurant',
-    'technology',
-    'wonderful',
-    'discipline',
-    'celebration',
-    'individual',
-    'government',
-    'university',
-    'imagination',
-    'enthusiastic'
-]
-
-word_dict_very_hard = [
-    'antidisestablishmentarianism',
-    'pneumonoultramicroscopicsilicovolcanoconiosis',
-    'sesquipedalian',
-    'hippopotomonstrosesquippedaliophobia',
-    'supercalifragilisticexpialidocious',
-    'floccinaucinihilipilification',
-    'sesquipedalianism',
-    'labyrinthine',
-    'schizophrenia',
-    'philoprogenitive',
-    'bibliopole',
-    'anomalistic',
-    'disestablishmentarian',
-    'antiestablishmentarianism',
-    'pseudopseudohypoparathyroidism',
-    'onomatopoeia',
-    'xylopyrography',
-    'heteropont',
-    'ultracrepidarian',
-    'autotonsorialist'
-]
-
 animation = [
-        """
-__________________________________________
-
-
-     Welcome to hangman!
-
-     
-__________________________________________
-        """
-,
-        """
-
-
-
-   
-
-          __________
-         /          \\
-        /            \\
-        """
-,
-        '''
-           _____
-           |   |
-               |
-               |
-               |
-          _____|___
-         /          \\
-        /            \\
-        '''
-,
         '''
            _____
            |   |
            O   |
-           |   |
+          /|\\  |
+          /    |
                |
           _____|___
          /          \\
-        /            \\       
+        /            \\ 
         '''
-,
+    ,
         '''
+           _____
+           |   |
+           O   |
+          /|\\  |
+               |
+          _____|___
+         /          \\
+        /            \\   
+        '''
+    ,
+           '''
            _____
            |   |
            O   |
@@ -152,24 +38,44 @@ __________________________________________
            _____
            |   |
            O   |
-          /|\\  |
+           |   |
                |
           _____|___
          /          \\
-        /            \\   
+        /            \\       
         '''
 ,
         '''
            _____
            |   |
-           O   |
-          /|\\  |
-          /    |
+               |
+               |
                |
           _____|___
          /          \\
-        /            \\ 
+        /            \\
         '''
+,
+        """
+
+
+
+   
+
+          __________
+         /          \\
+        /            \\
+        """
+,
+        """
+__________________________________________
+
+
+     Welcome to hangman!
+
+     
+__________________________________________
+        """
 ,
         '''
            _____
@@ -183,7 +89,8 @@ __________________________________________
         '''
 ]
 
-word_dict = {
+
+word_dict_easy = {
     'cat': "A furry creature often kept as a pet.",
     'dog': "Man's best friend, known for loyalty and companionship.",
     'bird': "A feathered creature with the ability to fly.",
@@ -204,7 +111,8 @@ word_dict = {
     'play': "Engagement in enjoyable activities for fun.",
     'blue': "A color between green and violet in the visible spectrum.",
     "myth": "Simular to a legend"
-    ,
+}
+word_dict_normal = {
     'orange': "A color resembling that of a ripe orange fruit.",
     'banana': "A yellow fruit with a soft, edible flesh.",
     'computer': "An electronic device for processing and storing data.",
@@ -225,7 +133,8 @@ word_dict = {
     'weather': "The state of the atmosphere at a particular place and time.",
     'captain': "A person who commands a ship or an aircraft.",
     'whisper': "Speaking in a quiet, hushed voice."
-    ,
+    }
+word_dict_hard = {
     'beautiful': "Pleasing to the senses or mind in a delightful way.",
     'challenge': "A difficult task or situation that tests one's abilities.",
     'celebrate': "To observe or commemorate an event with joy and festivity.",
@@ -246,7 +155,8 @@ word_dict = {
     'university': "An institution of higher education and research.",
     'imagination': "The ability to form mental images or concepts not present to the senses.",
     'enthusiastic': "Eager and excited about something."
-,
+}
+word_dict_very_hard = {
     'antidisestablishmentarianism': "Opposition to the withdrawal of state support or recognition from an established church, especially the Anglican Church in 19th-century England.",
     'pneumonoultramicroscopicsilicovolcanoconiosis': "A lung disease caused by inhaling very fine silica dust, causing inflammation in the lungs.",
     'sesquipedalian': "Characterized by long words; long-winded.",
@@ -287,3 +197,25 @@ instructiones = ["""
 - In difficulty, enter "4" for "a bit too hard" mode  
 _______________________________________________________________________
                  """]
+
+pls_type123 = "please type 1, 2 or 3"
+quit = "quitting game..."
+menu = """
+1.play
+
+2.how to play
+
+3.quit
+"""
+c_diff = """
+choose difficulty
+
+1.easy
+
+2.normal
+
+3.hard
+"""
+winner = """\033[93m you win woohooo!!! \033[0m
+___________________________________________
+"""
