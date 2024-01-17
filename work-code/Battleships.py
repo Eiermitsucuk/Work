@@ -3,7 +3,6 @@ import time
 
 # Function to display the start menu
 def start_menu():
-    print("-" * 45)
     print("""
 
         
@@ -44,7 +43,6 @@ def start_menu():
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠀⠀⠀⠀⠀
 
         """)
-    print("-" * 45)
     print("1. Play Game")
     print("2. View Highscores")
     print("3. Exit")
