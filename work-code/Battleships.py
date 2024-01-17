@@ -204,7 +204,7 @@ def main():
             print("Exiting game")
             break
         else:
-            print("Invalid choice. Enter 1 to play and 2 to exit.")
+            print("Invalid choice. Enter 1 to play, 2 to view highscores and 3 to exit.")
 
 # Entry point of the program
 if __name__ == "__main__":
