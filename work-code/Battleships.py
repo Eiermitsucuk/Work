@@ -82,14 +82,13 @@ def print_board(board):
         print("+".join(board[i:i + 4]))
 
 def save_highscores(score):
-    with open("highscores battleships.txt, "a") as file:
-        file.write(f"{scores}\n")
-
+    with open("battleships_highscores.txt", "a") as file:
+        file.write(f"{score}\n")
 
 def view_highscores():
     print("Highscores:")
     try:
-        with open("highscores battleships.txt", "r") as file:
+        with open("battleships_highscores.txt", "r") as file:
             highscores = file.readlines()
             if not highscores:
                 print("There is no highscores saved yet.")
@@ -111,8 +110,7 @@ def play_game():
     }
 
     # Initialize the game board with '*' representing sea
-    board = ["--*--"] * 16
-    print_board(board)
+    board = [""] * 16
 
     # Place 4 ships randomly on the board
     for i in range(4):
@@ -131,38 +129,33 @@ def play_game():
         # Get the player's guess and convert it to an index value
         while True:
             try:
-                guess = input(
-                    """
-                       
-                          1    2    3    4    5    6    7    8
-                         ____ ____ ____ ____ ____ ____ ____ ____                
-                        |    |    |    |    |    |    |    |    |                
-                     A  |    |    |    |    |    |    |    |    |                   
-                        |____|____|____|____|____|____|____|____|              
-                        |    |    |    |    |    |    |    |    |
-                     B  |    |    |    |    |    |    |    |    |
-                        |____|____|____|____|____|____|____|____|
-                        |    |    |    |    |    |    |    |    |
-                     C  |    |    |    |    |    |    |    |    |
-                        |____|____|____|____|____|____|____|____|
-                        |    |    |    |    |    |    |    |    |
-                     D  |    |    |    |    |    |    |    |    |
-                        |____|____|____|____|____|____|____|____|
-                        |    |    |    |    |    |    |    |    |
-                     E  |    |    |    |    |    |    |    |    |
-                        |____|____|____|____|____|____|____|____|
-                        |    |    |    |    |    |    |    |    |
-                     F  |    |    |    |    |    |    |    |    |
-                        |____|____|____|____|____|____|____|____|
-                        |    |    |    |    |    |    |    |    |
-                     G  |    |    |    |    |    |    |    |    |
-                        |____|____|____|____|____|____|____|____|
-                        
+                guess = input(""" Where should we bomb, commander!? (Enter coordinates, e.g., A1):
+                 
+                                               1    2    3    4    5    6    7    8
+                                             ____ ____ ____ ____ ____ ____ ____ ____                
+                                            |    |    |    |    |    |    |    |    |                
+                                         A  |    |    |    |    |    |    |    |    |                   
+                                            |____|____|____|____|____|____|____|____|              
+                                            |    |    |    |    |    |    |    |    |
+                                         B  |    |    |    |    |    |    |    |    |
+                                            |____|____|____|____|____|____|____|____|
+                                            |    |    |    |    |    |    |    |    |
+                                         C  |    |    |    |    |    |    |    |    |
+                                            |____|____|____|____|____|____|____|____|
+                                            |    |    |    |    |    |    |    |    |
+                                         D  |    |    |    |    |    |    |    |    |
+                                            |____|____|____|____|____|____|____|____|
+                                            |    |    |    |    |    |    |    |    |
+                                         E  |    |    |    |    |    |    |    |    |
+                                            |____|____|____|____|____|____|____|____|
+                                            |    |    |    |    |    |    |    |    |
+                                         F  |    |    |    |    |    |    |    |    |
+                                            |____|____|____|____|____|____|____|____|
+                                            |    |    |    |    |    |    |    |    |
+                                         G  |    |    |    |    |    |    |    |    |
+                                            |____|____|____|____|____|____|____|____|
 
-                
-
-                    Where should we bomb, commander!? (Enter coordinates, e.g., A1): """
-                )
+                    """ )
                 # Convert chess coordinate to index value
                 guess_index = chess_coordinates.get(guess.upper())
 
@@ -194,18 +187,19 @@ def play_game():
 
     # Print the final score
     print(f"Your score: {score}")
+    save_highscores(score)
     print("GAME OVER")
 
 # Main function to run the game
 def main():
     while True:
         start_menu()
-        choice = input("Enter your choice (1 or 2): ")
+        choice = input("Enter your choice (1, 2 or 3.): ")
 
         if choice == "1":
             play_game()
-        elif choice =="2":
-
+        elif choice == "2":
+            view_highscores()
         elif choice == "3":
             print("Exiting game")
             break
@@ -217,5 +211,4 @@ if __name__ == "__main__":
     main()
 
 # Print GAME OVER after exiting the game
-print("GAME OVER"))
-
+print("GAME OVER")
