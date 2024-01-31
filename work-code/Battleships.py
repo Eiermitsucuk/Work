@@ -1,16 +1,12 @@
 import random
 import time
 
-# Function to display the start menu
 def start_menu():
     print("""
-
         
              !!!     Welcome to Battleships Game     !!!
 
-
-        ⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⡿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢡⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⡇⠙⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+             ⠀⠀  ⠀⢡⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⡇⠙⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡇⠀⠀⠀⠀⠀⠀⠀⣀⡤⡞⢫⡎⢸⢱⠀⠀⠻⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⣟⡒⣶⣶⣶⣾⡯⠟⠛⠁⠈⢳⣼⣸⠀⠀⠀⠈⠣⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠉⠓⠿⣟⣓⣒⣀⡤⠶⠚⠉⢹⣿⠀⠀⠀⠀⠀⠘⢦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -41,33 +37,35 @@ def start_menu():
 ⠀⠀⠀⠀⠀⠀⠈⢿⢿⠇⢿⣄⠘⠳⠽⠷⢯⡀⢹⣇⠀⠀⣀⡤⠤⠤⢤⣈⡛⢶⣞⠁⢀⣀⠀⠉⠻⠟⠡⠴⠛⠛⠛⠋⠛⢳⣍⠀⠹⣿⡄⠈⠛⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠷⣶⣤⣤⣼⠇⠈⠻⣦⣀⢹⣷⣶⠀⠀⠈⠉⠛⢿⣦⣼⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣏⢀⣾⡿⠣⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠀⠀⠀⠀⠀
-
         """)
     print("1. Play Game")
     print("2. View Highscores")
     print("3. Exit")
     print("-" * 45)
-    
-def print_board(board):
 
+def create_board(rows, columns):
+    return [[' ' for _ in range(columns)] for _ in range(rows)]
+
+def print_board(board):
     rows = len(board)
-    columns = len(baord[0])
+    columns = len(board[0])
 
     print("  " + " ".join([chr(ord('A') + i) for i in range(columns)]))
 
     for i, row in enumerate(board):
         print(f"{i} {' '.join(row)}")
 
+def letter_to_index(letter):
     return ord(letter) - ord('A')
 
 def save_highscores(score):
     with open("battleships_highscores.txt", "a") as file:
-        file.write(f"{score}\n") #f-string converts the score variable to a string and appends a newline character at the end.
+        file.write(f"{score}\n")
 
 def view_highscores():
     print("Highscores:")
     try:
-        with open("battleships_highscores.txt", "r") as file: #The "with" statement helps that the file is properly closed after reading.
+        with open("battleships_highscores.txt", "r") as file:
             highscores = file.readlines()
             if not highscores:
                 print("There is no highscores saved yet.")
@@ -75,40 +73,19 @@ def view_highscores():
                 for idx, score in enumerate(highscores, start=1):
                     print(f"{idx}. {int(score)}")
     except FileNotFoundError:
-        print("There is no highscores saved yet.") #catches the error and prints
+        print("There is no highscores saved yet.")
 
 def play_game():
-    score = 0 
+    score = 0
 
-    board = ["""
-                         ___ ___ ___ ___ ___ ___ ___ ___                
-                        |   |   |   |   |   |   |   |   |               
-                        | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |                  
-                        |___|___|___|___|___|___|___|___|            
-                        |   |   |   |   |   |   |   |   |
-                        | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-                        |___|___|___|___|___|___|___|___|
-                        |   |   |   |   |   |   |   |   |
-                        | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-                        |___|___|___|___|___|___|___|___|
-                        |   |   |   |   |   |   |   |   |
-                        | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-                        |___|___|___|___|___|___|___|___|
-                        |   |   |   |   |   |   |   |   |
-                        | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-                        |___|___|___|___|___|___|___|___|
-                        |   |   |   |   |   |   |   |   |
-                        | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-                        |___|___|___|___|___|___|___|___|
-                        |   |   |   |   |   |   |   |   |
-                        | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-                        |___|___|___|___|___|___|___|___|   
-            """]
+    # Create the game board
+    rows = 5
+    columns = 5
+    board = create_board(rows, columns)
 
     for i in range(4):
         ship_row = random.randint(0, len(board) - 1)
         ship_col = random.randint(0, len(board[0]) - 1)
-
         board[ship_row][ship_col] = '0'
 
     print_board(board)
@@ -146,13 +123,16 @@ def play_game():
     else:
         print("We lost the war :(")
 
+    return score
+
 def main():
+    score = 0
     while True:
         start_menu()
         choice = input("Enter your choice (1, 2 or 3.): ")
 
         if choice == "1":
-            play_game()
+            score = play_game()
         elif choice == "2":
             view_highscores()
         elif choice == "3":
@@ -164,5 +144,6 @@ def main():
     print(f"Your score: {score}")
     save_highscores(score)
     print("GAME OVER")
-    
-main()
+
+if __name__ == "__main__":
+    main()
