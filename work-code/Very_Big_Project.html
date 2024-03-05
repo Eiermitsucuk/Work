@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Specifies that the primary lang. is english in this document --> 
+<head> <!-- Shows the meta-information document (character encoding, viewport settings) --> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battleships Game</title>
+    <style> /* starting css */
+        .spinner-box {
+            margin: auto; /* to the center horizontally */
+            margin-top: 20%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+        }
+        .spinner {
+            width: 30px;
+            height: 30px;
+            border: 5px solid #ccc;
+            border-top-color: #333;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {       /*specifies the animation*/
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="spinner-box">
+        <div class="spinner"></div>
+    </div>
+</body>
+</html>
