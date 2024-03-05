@@ -46,8 +46,6 @@ def start_menu():         #starting the game
 def print_board(board):
     rows = len(board)
     columns = len(board[0]) #this both code calculates the number of rows and columns
-
-<<<<<<< HEAD
     print("  " + " ".join([str(i) for i in range(0, columns + 1)]))
      #this function prints the contents, which is represented as a list.
 
@@ -55,25 +53,11 @@ def print_board(board):
         print(f"{chr(ord('A') + i)} {' '.join(row)}")
     #this generates a sequence of numbers. then it adds each number to the "(ord("A"))" and then converts it again to a character by writing "chr()"
 
-=======
-    print("  " + " ".join([chr(ord("A") + i) for i in range(columns)]))
-    #this generates a sequence of numbers. then it adds each number to the "(ord("A"))" and then converts it again to a character by writing "chr()"
-
-    for i, row in enumerate(board):
-        print(f"{i} {' '.join(row)}")
-
- #this function prints the contents, which is represented as a list.
->>>>>>> 312560670f777dd39a899b29932dcb634b4b6b2b
-
-
 def create_board(rows, columns):
     return [[" " for _ in range(columns)] for _ in range(rows)] #this function creates the gameboard automatically
 
-<<<<<<< HEAD
 def letter_to_index(letter): 
-=======
 def letter_to_index(letter):
->>>>>>> 312560670f777dd39a899b29932dcb634b4b6b2b
     return ord(letter) - ord("A")
 
  # takes the uppercase letter as inout and returns its index in the alphabet. It calculates the index by subtracting the ASCII.
@@ -81,12 +65,8 @@ def letter_to_index(letter):
 
 def save_highscores(score):
     with open("battleships_highscores.txt", "a") as file:
-<<<<<<< HEAD
         file.write(f"{player}: {score}\n")
-=======
         file.write(f"{score}\n")
->>>>>>> 312560670f777dd39a899b29932dcb634b4b6b2b
-
  #saves the score to file. "with" and "a" is for opening the file in append mode and it writes the new scores on new lines by writing "\n". 
 
 def view_highscores():
@@ -105,10 +85,7 @@ def view_highscores():
  #this function reads and displays the highscores stored in the file
 
 def play_game():
-<<<<<<< HEAD
     player = input("Enter your username: ")
-=======
->>>>>>> 312560670f777dd39a899b29932dcb634b4b6b2b
     score = 0
     rows = 10
     columns = 10
@@ -121,11 +98,7 @@ def play_game():
 
     print_board(board)
     screen_board = [[' ' for _ in range(len(board[0]))] for _ in range(len(board))]
-<<<<<<< HEAD
-=======
-
     player = input("Enter your username: ")
->>>>>>> 312560670f777dd39a899b29932dcb634b4b6b2b
 
     for i in range(5):
         print("-" * 45)
@@ -162,7 +135,7 @@ def play_game():
     save_highscores(f"{player}: {score}") # in this code "f" will replace "player" and "score" with their value of the variable and will result in a string that shows the player's name and score together
 
     return score
-2
+    
 def main():
     score = 0
     while True:
@@ -184,8 +157,5 @@ def main():
     print("GAME OVER")
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     main()
-=======
-    main()
->>>>>>> 312560670f777dd39a899b29932dcb634b4b6b2b
+
