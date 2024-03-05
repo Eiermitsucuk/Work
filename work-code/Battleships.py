@@ -57,7 +57,6 @@ def create_board(rows, columns):
     return [[" " for _ in range(columns)] for _ in range(rows)] #this function creates the gameboard automatically
 
 def letter_to_index(letter): 
-def letter_to_index(letter):
     return ord(letter) - ord("A")
 
  # takes the uppercase letter as inout and returns its index in the alphabet. It calculates the index by subtracting the ASCII.
