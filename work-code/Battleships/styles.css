@@ -1,0 +1,54 @@
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    overflow-x: hidden;
+    background-color: black;
+    color: aliceblue;
+}
+
+.one {
+    background-color: green;
+}
+
+.two {
+    background-color: green;
+}
+
+.three {
+    background-color: green;
+}
+
+.four {
+    background-color: green;
+}
+
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.splash-title {
+    font-family: Jazz LET, fantasy;
+    font-size: 10rem;
+}
+
+button {
+    font-size: medium;
+    margin-left: 2rem;
+    cursor: pointer;
+    padding: 10.6px 20px;
+    border: 0;
+    border-radius: 50px;
+    background-color: #fb2b2b;
+    color: #ffffff;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+button:hover {
+    background-color: #ff6f6f;
+    transform: scale(1.1);
+}
