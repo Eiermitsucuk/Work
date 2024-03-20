@@ -39,7 +39,6 @@
     createBoard(userGrid, userSquares)
     createBoard(computerGrid, computerSquares)
   
-    // Select Player Mode
     if (gameMode === 'singlePlayer') {
       startSinglePlayer()
     } else {
