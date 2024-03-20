@@ -29,7 +29,6 @@ const heartColors = ['#ff5e5e', '#ffb6b6', '#ff8484', '#ff9292', '#ffaaaa'];
 const heartInterval = 15; 
 const numberOfHearts = 500; 
 
-// Evet butonu
 const yesButton = document.getElementById('yesButton');
 
 yesButton.addEventListener('click', function () {
@@ -89,7 +88,6 @@ document.addEventListener('keydown', function (event) {
         title.textContent = 'Don`t even try';
         
 
-        //  turn back
         setTimeout(() => {
             title.textContent = 'Can we just date?';
         }, 2000);
