@@ -10,7 +10,7 @@ buttons.forEach((button) => {
     button.addEventListener('click', handleInput);
 });
 
-function equasion(numberA, operation, numberB) {
+function equation(numberA, operation, numberB) {
     switch(operation){
         case "-": 
             result = numberA - numberB;
@@ -39,7 +39,7 @@ function handleInput(event) {
         display.textContent = numberB;
     }
     else if (event.target.textContent === "=") {
-        result = equasion(numberA, numberB, operation);
+        result = equation(numberA, numberB, operation);
         numberA = result;
         numberB = 0;
         operation = null;
