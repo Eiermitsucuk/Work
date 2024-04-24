@@ -5,20 +5,53 @@ body {
     color: aliceblue;
 }
 
-.one {
+
+
+.square {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #00fff2;
+    float: left;
+}
+
+#gameboard {
+    width: 160px;
+    height: 160px;
+    margin-top: 20px;
+}
+
+#shipOne{
+    width: 100px;
+    height: 30px;
+    background-color: blue; 
+    cursor: pointer;
+    margin-bottom: 10px; 
+}
+
+#shipTwo {
+    width: 80px;
+    height: 30px;
+    background-color: red;
+}
+
+#shipThree {
+    width: 60px;
+    height: 30px;
     background-color: green;
 }
 
-.two {
-    background-color: green;
+#shipFour {
+    width: 40px;
+    height: 30px;
+    background-color: yellow;
 }
 
-.three {
-    background-color: green;
+.ship-preview.rotated {
+    transform: rotate(90deg);
 }
 
-.four {
-    background-color: green;
+.ship-preview.selected {
+    outline: 2px solid rgb(255, 255, 255); 
 }
 
 .splash-container {
@@ -33,6 +66,15 @@ body {
     font-family: Jazz LET, fantasy;
     font-size: 10rem;
 }
+
+
+.option-container {
+    width: 500px;
+    height: 80px;
+    background-color: #00fff2;
+}
+
+
 
 button {
     font-size: medium;
