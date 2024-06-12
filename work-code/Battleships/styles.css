@@ -3,55 +3,75 @@ body {
     overflow-x: hidden;
     background-color: black;
     color: aliceblue;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh; 
+    margin: 0; 
 }
 
-
-
 .square {
-    width: 20px;
-    height: 20px;
+    width: 40px;  
+    height: 40px;  
     border: 1px solid #00fff2;
     float: left;
 }
 
-#gameboard {
-    width: 160px;
-    height: 160px;
+.gameboard {
+    position: relative;
+    margin: auto;
+    width: 320px;
+    height: 320px;
     margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 1px;
+    border: 1px red;
+    background-color: #ffffff;
+    border: 2px solid #00fff2;
 }
 
-#shipOne{
-    width: 100px;
-    height: 30px;
+#shipOne {
+    width: 140px;
+    height: 40px;
     background-color: blue; 
     cursor: pointer;
     margin-bottom: 10px; 
 }
 
 #shipTwo {
-    width: 80px;
-    height: 30px;
+    width: 120px;
+    height: 40px;
     background-color: red;
 }
 
 #shipThree {
-    width: 60px;
-    height: 30px;
+    width: 100px;
+    height: 40px;
     background-color: green;
 }
 
 #shipFour {
-    width: 40px;
-    height: 30px;
+    width: 80px;
+    height: 40px;
     background-color: yellow;
 }
 
+.ship-preview {
+    cursor: pointer;
+    position: relative;  
+    margin: auto;
+    margin-top: 20px;
+    align-items: flex-start;
+    z-index: 1;
+}
+  
 .ship-preview.rotated {
     transform: rotate(90deg);
 }
 
 .ship-preview.selected {
-    outline: 2px solid rgb(255, 255, 255); 
+    outline: 2px solid rgb(83, 73, 73); 
 }
 
 .splash-container {
@@ -67,20 +87,6 @@ body {
     font-size: 10rem;
 }
 
-
-.option-container {
-    width: 500px;
-    height: 80px;
-    background-color: #00fff2;
-}
-
-#gameboard {
-    color: #ffffff;
-    width: 160px; 
-    height: 160px; 
-    margin-top: 20px; 
-}
-
 button {
     font-size: medium;
     margin-left: 2rem;
@@ -90,7 +96,7 @@ button {
     border-radius: 50px;
     background-color: #fb2b2b;
     color: #ffffff;
-    font-weight: Bold;
+    font-weight: bold;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
 }

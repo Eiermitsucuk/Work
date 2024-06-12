@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Element Position</title>
+    <style>
+        #trackedElement {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: coral;
+        }
+    </style>
+</head>
+<body>
+    <div id="trackedElement"></div>
+
+    <script>
+        // Select the element you want to track
+        const trackedElement = document.getElementById('trackedElement');
+
+        // Function to log the position of the element
+        function logElementPosition() {
+            const rect = trackedElement.getBoundingClientRect();
+            console.log(`Element position - Top: ${rect.top}, Left: ${rect.left}`);
+        }
+
+        // Log the position initially
+        logElementPosition();
+
+        // Add an event listener for window resize
+        window.addEventListener('resize', logElementPosition);
+
+        // Create a MutationObserver to observe changes to the DOM that might affect the element's position
+        const observer = new MutationObserver(() => {
+            logElementPosition();
+        });
+
+        // Start observing the element with the configured parameters
+        observer.observe(document.body, {
+            attributes: true,
+            childList: true,
+            subtree: true,
+            characterData: true
+        });
+
+        // Cleanup function when the script is no longer needed
+        function cleanup() {
+            window.removeEventListener('resize', logElementPosition);
+            observer.disconnect();
+        }
+
+        // Example cleanup call (you can call this function whenever you need to stop observing)
+        // cleanup();
+    </script>
+</body>
+</html>
