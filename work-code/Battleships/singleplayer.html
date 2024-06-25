@@ -4,21 +4,19 @@
     <meta charset="utf-8">
     <title>Battle Ships</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" charset="utf-8"></script>
+    <script defer src="script.js" charset="utf-8"></script>
   </head>
   <body>
     <div id="game-info">
       <p>Click R to turn your ships</p>
-      <p>Info: <span id="Your Ships"></span></p>
+      <p>Info:</p>
     </div>
-    <div id="gamesboard-container"></div>
-    <div class="option-container">
+    <div class="container"></div>
+      <div id="gameboard" class="gameboard"></div>
         <div id="shipOne" class="ship-preview" draggable="true"></div>
         <div id="shipTwo" class="ship-preview" draggable="true"></div>
         <div id="shipThree" class="ship-preview" draggable="true"></div>
         <div id="shipFour" class="ship-preview" draggable="true"></div>
-    </div>
-    <div id="gameboard"></div>
-    </div>
+    </div> 
   </body>
 </html>
