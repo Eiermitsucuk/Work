@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAC IT Support Services - Products</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Product page specific styles */
+        .products {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .products h2 {
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #222831; /* First color */
+        }
+
+        .products .product-item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .products .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .products .product-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+
+        .products .product-description {
+            flex: 1;
+            text-align: left;
+        }
+
+        .products .product-description h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            color: #f96d00; /* Third color */
+        }
+
+        .products .product-description p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .products .product-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .products .product-image {
+                width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+            }
+
+            .products .product-description {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="first-color">
+            <div class="container">
+                <h1>HAC IT Support Services</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <section class="products">
+                <div class="container">
+                    <h2>Our Products</h2>
+                    <div class="product-item">
+                        <img src="https://static.vecteezy.com/system/resources/previews/007/372/199/original/home-automation-icon-or-logo-suitable-for-smart-home-technology-home-security-or-home-monitoring-technology-line-art-style-with-black-color-vector.jpg" alt="Product One" class="product-image">
+                        <div class="product-description">
+                            <h3>Control Your World with a Touch!</h3>
+                            <p>Transform your living space with our cutting-edge smart home automation system. Seamlessly integrate lighting, security, climate control, and entertainment for a more convenient and connected lifestyle.</p>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://png.pngtree.com/png-clipart/20230924/original/pngtree-heart-rate-fitness-tracker-smart-watch-icon-for-web-and-mobile-png-image_12845019.png" alt="Product Two" class="product-image">
+                        <div class="product-description">
+                            <h3>Your Fitness, Your Journey, Your Way!</h3>
+                            <p>Stay motivated and track your health goals with our sleek and reliable wearable fitness tracker. Monitor your steps, heart rate, sleep patterns, and more to achieve a healthier, more active lifestyle. </p>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Solar_energy_icon.png" alt="Product Three" class="product-image">
+                        <div class="product-description">
+                            <h3>Power Up Anywhere, Anytime!</h3>
+                            <p>Embrace sustainable energy with our high-efficiency portable solar charger. Perfect for outdoor adventures or emergency situations, this eco-friendly charger ensures your devices stay powered up on the go.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="first-color">
+            <div class="container">
+                <p>&copy; 2024 HAC IT Support Services. All rights reserved.</p>
+                <p>Contact us at: info@hac.com | 123-456-7890</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

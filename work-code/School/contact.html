@@ -1,26 +1,56 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt</title>
+    <title>HAC IT Support Services - Contact</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Kontakt</h1>
-    </header>
-    <nav>
-        <a href="index.html">Startseite</a>
-        <a href="about.html">Über uns</a>
-        <a href="services.html">Leistungen</a>
-        <a href="gallery.html">Galerie</a>
-        <a href="contact.html">Kontakt</a>
-    </nav>
-    <main>
-        <h2>Kontakt</h2>
-        <p>Kontaktieren Sie uns für weitere Informationen.</p>
-    </main>
+    <div class="wrapper">
+        <header class="first-color">
+            <div class="container">
+                <h1>HAC IT Support Services</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <section class="contact">
+                <div class="container">
+                    <h2>Contact Us</h2>
+                    <div class="fancy-card second-color">
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" required placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required placeholder="Your Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message:</label>
+                                <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+                            </div>
+                            <button type="submit" class="third-color">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="first-color">
+            <div class="container">
+                <p>&copy; 2024 HAC IT Support Services. All rights reserved.</p>
+                <p>Contact us at: info@hac.com | 123-456-7890</p>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
-
