@@ -1,13 +1,37 @@
-document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var responseMessage = document.getElementById('responseMessage');
 
-    if(name && email) {
-        responseMessage.textContent = 'Thank you for signing up, ' + name + '!';
-        // Here you can add your logic to handle the form data, e.g., send it to your server
-    } else {
-        responseMessage.textContent = 'Please fill out both fields.';
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    // Simple validation (additional validation can be added here)
+    if (name === '' || email === '' || message === '') {
+        alert('All fields are required!');
+        return;
     }
+
+    // Create an object to hold form data
+    const formData = {
+        name: name,
+        email: email,
+        message: message
+    };
+
+    // Send data to the server (example endpoint)
+    fetch('https://raw.githubusercontent.com/Eiermitsucuk/New/main/Contact%20Forms.txt', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('response-message').innerText = 'Thank you for your message!';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('response-message').innerText = 'There was an error sending your message.';
+    });
 });

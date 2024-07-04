@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="first-color">
+            <div class="container">
+                <h1>HAC IT Support Services - Form Submission</h1>
+            </div>
+        </header>
+        <main>
+            <section class="contact">
+                <div class="container">
+                    <h2>Submitted Data</h2>
+                    <div class="fancy-card second-color">
+                        <p><strong>Name:</strong> <span id="submitted-name"></span></p>
+                        <p><strong>Email:</strong> <span id="submitted-email"></span></p>
+                        <p><strong>Message:</strong> <span id="submitted-message"></span></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="first-color">
+            <div class="container">
+                <p>&copy; 2024 HAC IT Support Services. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <script>
+        // Function to get query parameters from URL
+        function getQueryParams() {
+            let params = {};
+            window.location.search.substr(1).split('&').forEach(function(part) {
+                let item = part.split('=');
+                params[item[0]] = decodeURIComponent(item[1]);
+            });
+            return params;
+        }
+
+        // Display the submitted data
+        document.addEventListener("DOMContentLoaded", function() {
+            let params = getQueryParams();
+            document.getElementById('submitted-name').innerText = params.name;
+            document.getElementById('submitted-email').innerText = params.email;
+            document.getElementById('submitted-message').innerText = params.message;
+        });
+    </script>
+</body>
+</html>

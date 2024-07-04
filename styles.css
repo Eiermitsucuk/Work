@@ -1,0 +1,38 @@
+button {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	appearance: button;
+	background-color: #f46f09;
+	border-radius: 20px;
+	border-width: 0 0 4px;
+	box-sizing:content-box;
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 5px;
+	line-height: 20px;
+	padding: 15px 20px;
+	text-align: center;
+	text-transform: uppercase;
+	touch-action: manipulation;
+	user-select: none;
+	-webkit-user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
+   }
+   
+   button:after {
+	background-color: #f46f09;
+	border: solid transparent;
+	border-radius: 16px;
+	border-width: 0 0 4px;
+   }
+
+   button:hover:not(:disabled) {
+	filter: brightness(1.2);
+   }
+

@@ -26,7 +26,7 @@
                 <div class="container">
                     <h2>Contact Us</h2>
                     <div class="fancy-card second-color">
-                        <form action="#" method="post">
+                        <form id="contact-form">
                             <div class="form-group">
                                 <label for="name">Name:</label>
                                 <input type="text" id="name" name="name" required placeholder="Your Name">
@@ -41,6 +41,7 @@
                             </div>
                             <button type="submit" class="third-color">Submit</button>
                         </form>
+                        <div id="response-message"></div>
                     </div>
                 </div>
             </section>
@@ -52,5 +53,14 @@
             </div>
         </footer>
     </div>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let message = document.getElementById('message').value;
+            window.location.href = `submit.html?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&message=${encodeURIComponent(message)}`;
+        });
+    </script>
 </body>
 </html>
