@@ -3,58 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Track Element Position</title>
+    <title>Simple Chess Game</title>
     <style>
-        #trackedElement {
-            position: absolute;
-            top: 50px;
-            left: 100px;
-            width: 100px;
-            height: 100px;
-            background-color: coral;
-        }
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 60px);
+    grid-template-rows: repeat(8, 60px);
+    gap: 1px;
+    background-color: #b58863;
+    border: 1px solid #333;
+}
+
+.square {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #333;
+}
+
+.square:nth-child(even) {
+    background-color: #f0d9b5;
+}
+
+.piece {
+    width: 100%;
+    height: 100%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.piece:hover {
+    cursor: pointer;
+}
+
     </style>
 </head>
 <body>
-    <div id="trackedElement"></div>
+    <div class="board" id="board">
+        <!-- Generate chessboard squares dynamically -->
+    </div>
 
     <script>
-        // Select the element you want to track
-        const trackedElement = document.getElementById('trackedElement');
+        document.addEventListener('DOMContentLoaded', () => {
+    const board = document.getElementById('board');
+    const squares = [];
 
-        // Function to log the position of the element
-        function logElementPosition() {
-            const rect = trackedElement.getBoundingClientRect();
-            console.log(`Element position - Top: ${rect.top}, Left: ${rect.left}`);
+    // Create the chessboard
+    for (let row = 0; row < 8; row++) {
+        squares[row] = [];
+        for (let col = 0; col < 8; col++) {
+            const square = document.createElement('div');
+            square.className = 'square';
+            square.dataset.row = row;
+            square.dataset.col = col;
+            squares[row][col] = square;
+
+            // Alternate coloring
+            if ((row + col) % 2 === 1) {
+                square.classList.add('dark');
+            }
+
+            board.appendChild(square);
+        }
+    }
+
+    // Initial setup of pieces
+    setupPieces();
+
+    // Function to set up initial pieces
+    function setupPieces() {
+        // Place white pawns
+        for (let col = 0; col < 8; col++) {
+            addPiece(6, col, '♙'); // Unicode for white pawn
         }
 
-        // Log the position initially
-        logElementPosition();
-
-        // Add an event listener for window resize
-        window.addEventListener('resize', logElementPosition);
-
-        // Create a MutationObserver to observe changes to the DOM that might affect the element's position
-        const observer = new MutationObserver(() => {
-            logElementPosition();
-        });
-
-        // Start observing the element with the configured parameters
-        observer.observe(document.body, {
-            attributes: true,
-            childList: true,
-            subtree: true,
-            characterData: true
-        });
-
-        // Cleanup function when the script is no longer needed
-        function cleanup() {
-            window.removeEventListener('resize', logElementPosition);
-            observer.disconnect();
+        // Place black pawns
+        for (let col = 0; col < 8; col++) {
+            addPiece(1, col, '♟︎'); // Unicode for black pawn
         }
+    }
 
-        // Example cleanup call (you can call this function whenever you need to stop observing)
-        // cleanup();
+    // Function to add a piece to a specific position
+    function addPiece(row, col, piece) {
+        const square = squares[row][col];
+        const pieceDiv = document.createElement('div');
+        pieceDiv.className = 'piece';
+        pieceDiv.textContent = piece;
+        square.appendChild(pieceDiv);
+    }
+
+    // Event listener for piece movement
+    board.addEventListener('click', (e) => {
+        const square = e.target.closest('.square');
+        if (!square) return;
+
+        const row = parseInt(square.dataset.row);
+        const col = parseInt(square.dataset.col);
+
+        // Example logic for pawn movement (only for initial setup)
+        const piece = square.querySelector('.piece');
+        if (piece && piece.textContent === '♙') { // White pawn
+            if (row === 6 && squares[row - 1][col].childElementCount === 0) {
+                squares[row - 1][col].appendChild(piece);
+            }
+        } else if (piece && piece.textContent === '♟︎') { // Black pawn
+            if (row === 1 && squares[row + 1][col].childElementCount === 0) {
+                squares[row + 1][col].appendChild(piece);
+            }
+        }
+    });
+});
+
     </script>
 </body>
 </html>
